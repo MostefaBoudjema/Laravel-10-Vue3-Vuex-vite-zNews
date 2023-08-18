@@ -19,21 +19,27 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary" @click="addProduct">Add Product</button>
+    <AddProduct/>
   </div>
 </template>
   
 <script>
 import { mapState, mapActions } from 'vuex'
+import AddProduct from './AddProduct.vue';
 
 export default {
-  name: 'Products',
-  computed: {
-    ...mapState('products', ['products'])
-  },
-  methods: {
-    ...mapActions('products', ['addProduct'])
-  }
+    name: 'Products',
+    computed: {
+        ...mapState('products', ['products'])
+    },
+    methods: {
+        ...mapActions('products', ['loadProduct'])
+    },
+    mounted() {
+        console.log('fetchProducts mounted.');
+        this.loadProduct();
+    },
+    components: { AddProduct }
 }
 </script>
   

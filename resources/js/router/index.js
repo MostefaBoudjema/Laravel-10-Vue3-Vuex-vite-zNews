@@ -9,7 +9,7 @@ const routes = [
     {
         path: '/',
         name: 'Index',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/Products/IndexProduct.vue'),
         meta: {
             title: generateMetaTitle('Index'),
         },
@@ -17,7 +17,7 @@ const routes = [
     {
         path: '/products',
         name: 'Products',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/Products/IndexProduct.vue'),
         meta: {
             title: generateMetaTitle('Products'),
         },
