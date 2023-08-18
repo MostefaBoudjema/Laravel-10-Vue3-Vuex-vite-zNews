@@ -1,5 +1,8 @@
 <template>
+  <!-- <AddProduct v-if="true" /> -->
+  <AddProduct :showAddProp="showAdd" @click="showAdd = !showAdd" />
   <div class="container mt-5">
+
     <h1>Products</h1>
     <table class="table">
       <thead>
@@ -20,36 +23,30 @@
         </tr>
       </tbody>
     </table>
-    <AddProduct />
   </div>
 </template>
   
-<script>
-import { mapState, mapActions } from 'vuex'
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
 import AddProduct from './AddProduct.vue';
 
-export default {
-  name: 'Products',
-  computed: {
-    ...mapState('products', ['products'])
-  },
-  methods: {
-  ...mapActions('products', ['loadProduct', 'deleteProduct']), // Map the deleteProduct action
-  async performDeleteProduct(id) {
-    try {
-      await this.deleteProduct(id); // Call the deleteProduct action
-    } catch (error) {
-      console.error('Error deleting product:', error);
-    }
-  },
-}
+const showAdd=ref(false);
+const store=useStore();
+const products=computed(() => store.state.products.products);
 
-  ,
-  mounted() {
-    console.log('fetchProducts mounted.');
-    this.loadProduct();
-  },
-  components: { AddProduct }
-}
+const performDeleteProduct=async (id) => {
+  try {
+    await store.dispatch('products/deleteProduct', id);
+  } catch (error) {
+    console.error('Error deleting product:', error);
+  }
+};
+
+onMounted(() => {
+  console.log('fetchProducts mounted.');
+  store.dispatch('products/loadProduct');
+});
+
 </script>
   
