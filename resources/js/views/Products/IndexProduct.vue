@@ -16,10 +16,11 @@
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.price }}</td>
+          <td><button class="btn btn-danger" @click="performDeleteProduct(product.id)">x</button></td>
         </tr>
       </tbody>
     </table>
-    <AddProduct/>
+    <AddProduct />
   </div>
 </template>
   
@@ -28,18 +29,27 @@ import { mapState, mapActions } from 'vuex'
 import AddProduct from './AddProduct.vue';
 
 export default {
-    name: 'Products',
-    computed: {
-        ...mapState('products', ['products'])
-    },
-    methods: {
-        ...mapActions('products', ['loadProduct'])
-    },
-    mounted() {
-        console.log('fetchProducts mounted.');
-        this.loadProduct();
-    },
-    components: { AddProduct }
+  name: 'Products',
+  computed: {
+    ...mapState('products', ['products'])
+  },
+  methods: {
+  ...mapActions('products', ['loadProduct', 'deleteProduct']), // Map the deleteProduct action
+  async performDeleteProduct(id) {
+    try {
+      await this.deleteProduct(id); // Call the deleteProduct action
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  },
+}
+
+  ,
+  mounted() {
+    console.log('fetchProducts mounted.');
+    this.loadProduct();
+  },
+  components: { AddProduct }
 }
 </script>
   
