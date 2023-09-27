@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app-div">
         <navbar/>
         <router-view />
     </div>
@@ -7,7 +7,7 @@
   
 <script>
 import { mapState } from 'vuex'
-import Navbar from './components/Navbar.vue'
+import Navbar from '../components/Navbar.vue'
 
 export default {
     components: { Navbar },

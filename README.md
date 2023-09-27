@@ -23,7 +23,7 @@ This is a web app built with Laravel 10 backend and Vue 3 frontend. It uses Vuex
 ## Usage
 
 - Run `php artisan serve` to run the Laravel app
-- Run `npm run watch` to compile Vue assets on change
+- Run `npm run dev` to compile Vue assets on change
 - Access the app at `http://localhost:8000`
 
 ## Vuex Store
