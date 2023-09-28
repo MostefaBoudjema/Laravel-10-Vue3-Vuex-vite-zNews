@@ -21,8 +21,6 @@
 
 <body>
     <div id="admin">
-dfggf
-        {{-- <app /> --}}
     </div>
 </body>
 

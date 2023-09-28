@@ -21,7 +21,7 @@
 <script>
 export default {
     mounted() {
-        console.log('Component mounted.')
+        console.log('Navbar mounted.')
     }
 }
 </script>
