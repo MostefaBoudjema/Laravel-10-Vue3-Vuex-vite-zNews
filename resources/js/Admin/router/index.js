@@ -5,47 +5,53 @@ function generateMetaTitle(routeName, projectType) {
     return `${AUTHOR_NAME} - ${projectType? projectType+' ':''}${routeName}`;
 }
 
-const routes=[
+import Blank from '../Pages/Blank.vue'
+import IndexProduct from '../Pages/Products/IndexProduct.vue'
+import Dashboard from '../Pages/Dashboard.vue'
+import Login from '../Pages/Auth/Login.vue'
+const routes = [
+    { path: '/login', component: Login, name: 'login' },
+    // { path: '/login', component: Login, name: 'login', hidden: true },
     {
         path: '/admin',
-        name: "/",
-        redirect: "/dashboard",
+        name: "Layout",
+        redirect: "/admin/dashboard",
         children: [
             {
-                path: '/dashboard',
+                path: '/admin/dashboard', // Keep the path as '/dashboard'
                 name: 'Dashboard',
-                component: () => import('../Pages/Dashboard.vue'),
+                component: Dashboard,
                 meta: {
                     title: generateMetaTitle('Dashboard'),
                 },
             },
             {
-                path: '/product',
-                component: import('../Pages/Products/IndexProduct.vue'),
+                path: '/admin/product', // Add the "dashboard" prefix here
+                component: IndexProduct,
                 name: 'Product',
                 meta: {
                     title: generateMetaTitle('Product'),
                 },
             },
             {
-                path: '/blank',
+                path: '/admin/blank', // Add the "dashboard" prefix here
                 name: 'Blank',
-                component: () => import('../Pages/Blank.vue'),
+                component: Blank,
                 meta: {
                     title: generateMetaTitle('Blank'),
                 },
             },
         ]
     },
-
-
 ];
+
 
 const router=createRouter({
     history: createWebHistory(),
     routes,
     scrollBehavior() {
-        document.getElementById('app').scrollIntoView();
+        document.getElementById('app');
+        // document.getElementById('app').scrollIntoView();
     },
 });
 

@@ -3,6 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "watch": "vite",
         "build": "vite build"
     },
     "devDependencies": {
@@ -16,12 +17,16 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.2",
         "@fortawesome/fontawesome-svg-core": "^6.1.1",
         "@fortawesome/free-brands-svg-icons": "^6.1.1",
         "@fortawesome/free-solid-svg-icons": "^6.1.1",
         "@fortawesome/vue-fontawesome": "^3.0.0-5",
         "bootstrap-icons": "^1.11.1",
+        "vue-carousel": "^0.18.0",
+        "vue-i18n": "^9.5.0",
         "vue-router": "^4.2.4",
+        "vue-slick": "^1.2.0",
         "vuex": "^4.1.0"
     }
 }
