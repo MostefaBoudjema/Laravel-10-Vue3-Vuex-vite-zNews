@@ -3,14 +3,14 @@
   <AddProduct />
   <div class="container mt-5">
 
-    <h1>Products</h1>
+    <h1>{{ $t('Products') }}</h1>
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
+          <th>{{ $t('ID') }}</th>
+          <th>{{ $t('Name') }}</th>
+          <th>{{ $t('Description') }}</th>
+          <th>{{ $t('Price') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +31,6 @@ import { ref, computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import AddProduct from './AddProduct.vue';
 
-const showAdd=ref(false);
 const store=useStore();
 const products=computed(() => store.state.products.products);
 
@@ -44,7 +43,7 @@ const performDeleteProduct=async (id) => {
 };
 
 onMounted(() => {
-  console.log('fetchProducts mounted.');
+  // console.log('fetchProducts mounted.');
   store.dispatch('products/loadProduct');
 });
 

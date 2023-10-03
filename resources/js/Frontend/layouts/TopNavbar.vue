@@ -22,7 +22,7 @@
 <script>
 export default {
     mounted() {
-        console.log('Navbar mounted.')
+        // console.log('Navbar mounted.')
     }
 }
 </script>

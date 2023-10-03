@@ -6,6 +6,7 @@ This is a web app built with Laravel 10 backend and Vue 3 frontend. It uses Vuex
 
 - Laravel 10 backend with REST APIs
 - Vue 3 frontend with Vue Router and Vuex 
+- Multi lang using vue-i18n
 - Authentication using Laravel Sanctum
 - Bootstrap 5 for responsive styling
 

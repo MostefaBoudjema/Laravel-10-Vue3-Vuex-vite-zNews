@@ -2,13 +2,15 @@
     <top-banner img="images/ABOUT US PAGE.png" :text="text_infos" />
     <we-offer-comp :servicesInfos="servicesInfos" />
     
-    <slider-comp title="We deliver all major newspapers & magazines" :slide_images="slide_images" />
+    <slide :img-list="slide_images"/>
+    <!-- <slider-comp title="We deliver all major newspapers & magazines" :slide_images="slide_images" /> -->
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import TopBanner from '../../components/TopBannerComp.vue';
 import WeOfferComp from '../../components/WeOfferComp.vue';
+import slide from '../../components/Slide.vue';
 import sliderComp from '../../components/SliderComp.vue';
 
 const text_infos=ref({
@@ -19,12 +21,11 @@ const text_infos=ref({
     img_height: "",
 });
 const slide_images=ref([
-    { src: 'images/Home_page.png', alt: 'DNB Image' },
-    { src: 'images/Home_page.png', alt: 'Gjensidige Image' },
-    { src: 'images/Home_page.png', alt: 'Gjensidige Image' },
-    { src: 'images/Home_page.png', alt: 'Gjensidige Image' },
-    { src: 'images/Home_page.png', alt: 'Gjensidige Image' },
-    { src: 'images/Home_page.png', alt: 'Gjensidige Image' },
+    { src: '/images/faces/1.jpg', alt: 'face1' },
+    { src: '/images/faces/2.jpg', alt: 'face2' },
+    { src: '/images/faces/3.jpg', alt: 'face3' },
+    { src: '/images/faces/4.jpg', alt: 'face4' },
+    { src: '/images/faces/5.jpg', alt: 'face5' },
 ]);
 const servicesInfos=ref([
     {

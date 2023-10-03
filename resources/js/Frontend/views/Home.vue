@@ -1,8 +1,8 @@
 <template>
     <div>        
         <!-- <carousel/> -->
-        <slide :img-list="slide_images"/>
         <top-banner :text="text_infos" />
+        <slide :img-list="slide_images"/>
         <!-- <slider-comp title="We deliver all major newspapers & magazines" :slide_images="slide_images" /> -->
         <!-- <carousel-next title="We deliver all major newspapers & magazines" :slide_images="slide_images"/> -->
     </div>

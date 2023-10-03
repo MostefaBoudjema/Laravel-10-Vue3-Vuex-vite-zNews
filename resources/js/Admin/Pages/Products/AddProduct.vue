@@ -17,14 +17,11 @@ import { useStore } from 'vuex';
 import { ref } from 'vue';
 
 const store=useStore();
-// const props=defineProps({
-//     showAddProp: { type: Boolean, required: true },
-// })
 const showAdd=ref(false);
 const newProduct=ref({
     name: '',
     description: '',
-    price: null
+    price: ''
 });
 
 const addNewProduct=async () => {
@@ -39,6 +36,7 @@ const addNewProduct=async () => {
     newProduct.value.name='';
     newProduct.value.description='';
     newProduct.value.price=null;
+    store.dispatch('products/loadProduct');
 };
 
 
