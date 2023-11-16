@@ -15,9 +15,8 @@
                         </ul>
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                             <li class="nav-item me-3">
-
                                 <router-link class="nav-link" :class="{ active: $route.name === 'Products' }"
-                                    aria-current="page" :to="{ name: 'Products' }">Products</router-link>
+                                    aria-current="page" :to="{ name: 'Products' }">{{ $t("Products") }}</router-link>
                             </li>
                             <!-- <li class="nav-item">
 
@@ -57,7 +56,39 @@
                                     <li><router-link :to="{ name: 'Essentials' }"  class="dropdown-item oswald-700 p-3" :class="{ active: $route.name === 'Essentials' }">{{ $t('Essentials') }}</router-link></li> 
                                 </ul>
                             </li>
-                        </ul>
+                        <!-- </ul>
+                        <ul class="nav-pills navbar-nav ml-auto d-flex d-md-none d-lg-flex"> -->
+                    <li v-if="true" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <!-- <img :src="user.photo_url" style="width: 15px;" class="rounded-circle profile-photo mr-1" alt /> -->
+                            <!-- {{ user.name }} -->
+                        </a>
+                        <div class="dropdown-menu" role="menu2">
+                            <router-link :to="{ name: 'Essentials' }" class="dropdown-item pl-3 px-2">
+                                {{ $t("settings") }}
+                            </router-link>
+
+                            <div class="dropdown-divider" />
+                            <a href="#" class="dropdown-item pl-3 px-2" @click.prevent="logout">
+                                {{ $t("logout") }}
+                            </a>
+                        </div>
+                    </li>
+
+                    <template v-else>
+                        <li class="nav-item " @click="closeToggler">
+                            <router-link class="nav-link text-nowrap px-2" :to="{ name: 'Login' }">
+                                {{ $t("login") }}
+                            </router-link>
+                        </li>
+                        <!-- <li class="nav-item" @click="closeToggler">
+                            <router-link class="nav-link mr-md-1 px-2" :to="{ name: 'register' }">
+                                {{ $t("register") }}
+                            </router-link>
+                        </li> -->
+                    </template>
+                </ul>
                     </div>
                 </div>
             </nav>
@@ -69,6 +100,11 @@
 export default {
     mounted() {
         // console.log('Navbar mounted.')
+    },
+    methods:{
+        closeToggler(){
+            console.log('closeToggler.');
+        }
     }
 }
 </script>

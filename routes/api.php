@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,6 +10,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([ 'namespace' => '\App\Http\Controllers\Api', 'as' => 'api.'], function () {
-// Route::group(['middleware' => ['auth:api'], 'namespace' => '\App\Http\Controllers\Api', 'as' => 'api.'], function () {
-    Route::apiResource('products', ProductsController::class); // Make sure to provide the correct namespace for the controller
+    
+Route::post('/login', [LoginController::class, 'login']);
+Route::apiResource('products', ProductsController::class); 
 });
+
+
+
+
+
+
+
+
+
+
+// Route::group(['middleware' => ['auth:api'], 'namespace' => '\App\Http\Controllers\Api', 'as' => 'api.'], function () {

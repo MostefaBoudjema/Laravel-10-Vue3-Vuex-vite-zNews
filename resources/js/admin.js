@@ -13,7 +13,7 @@ import i18n from './Lang/i18n';
 
 const admin=createApp(Admin);
 admin
-.use(router)
+    .use(router)
     .use(i18n)
     .use(store)
 

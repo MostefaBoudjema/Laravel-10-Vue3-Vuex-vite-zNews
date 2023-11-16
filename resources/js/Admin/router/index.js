@@ -4,44 +4,43 @@ const AUTHOR_NAME='Mostefa Boudjema';
 function generateMetaTitle(routeName, projectType) {
     return `${AUTHOR_NAME} - ${projectType? projectType+' ':''}${routeName}`;
 }
-
-import Blank from '../Pages/Blank.vue'
-import IndexProduct from '../Pages/Products/IndexProduct.vue'
-import Dashboard from '../Pages/Dashboard.vue'
-import Login from '../Pages/Auth/Login.vue'
 const routes = [
-    { path: '/login', component: Login, name: 'login' },
-    // { path: '/login', component: Login, name: 'login', hidden: true },
+    { path: '/admin/login', component: () => import('~admin/Auth/Login.vue'), name: 'login' },
     {
         path: '/admin',
-        name: "Layout",
+        name: "Basic",
+        component: () => import('~admin/layouts/Basic.vue'),
         redirect: "/admin/dashboard",
         children: [
             {
-                path: '/admin/dashboard', // Keep the path as '/dashboard'
+                path: '/admin/dashboard', 
                 name: 'Dashboard',
-                component: Dashboard,
+                component: () => import('~admin/Pages/Dashboard.vue'),
                 meta: {
                     title: generateMetaTitle('Dashboard'),
                 },
             },
             {
-                path: '/admin/product', // Add the "dashboard" prefix here
-                component: IndexProduct,
+                path: '/admin/product',
+                component: () => import('~admin/Pages/Products/IndexProduct.vue'),
                 name: 'Product',
                 meta: {
                     title: generateMetaTitle('Product'),
                 },
             },
             {
-                path: '/admin/blank', // Add the "dashboard" prefix here
+                path: '/admin/blank', 
                 name: 'Blank',
-                component: Blank,
+                component: () => import('~admin/Pages/Blank.vue'),
                 meta: {
                     title: generateMetaTitle('Blank'),
                 },
             },
         ]
+    },
+    {
+        path: '/admin/:catchAll(.*)',
+        component: () => import('~frontend/views/404.vue'),
     },
 ];
 
