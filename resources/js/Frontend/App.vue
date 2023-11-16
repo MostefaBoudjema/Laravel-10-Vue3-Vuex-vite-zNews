@@ -4,16 +4,9 @@
     </div>
 </template>
   
-<script>
-import { mapState } from 'vuex'
+<script setup>
 
-export default {
-    components: {  },
-    name: 'App',
-    computed: {
-        ...mapState('products', ['products'])
-    }
-}
+
 </script>
 <style >
 .oswald-700 {

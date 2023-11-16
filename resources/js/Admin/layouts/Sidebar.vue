@@ -13,7 +13,7 @@
 
             <li class="nav-item">
                 <router-link class="nav-link" :class="{ collapsed: $route.name !== 'Product' }" :to="{ name: 'Product' }" >
-                    <i class="bi bi-grid"></i>
+                    <i class="bi bi-p-square-fill"></i>
                     <span>Product</span>
                 </router-link>
             </li><!-- End Product Nav -->
@@ -258,10 +258,8 @@
     </aside><!-- End Sidebar-->
 </template>
 
-<script>
-export default {
-    name:'Sidebar'
-}
+<script setup>
+
 </script>
 
 <style></style>

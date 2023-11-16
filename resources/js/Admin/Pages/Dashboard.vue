@@ -3,7 +3,7 @@
         <h1>Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><router-link :to="{ name: 'Dashboard' }" >Home</router-link></li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
         </nav>
@@ -504,10 +504,8 @@
     </section>
 </template>
 
-<script>
-export default {
-    layout: 'basic', 
-}
+<script setup>
+
 </script>
 
 <style></style>

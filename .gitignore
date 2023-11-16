@@ -17,5 +17,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/_BAK
-_BAK2/*
+/_BAK/*

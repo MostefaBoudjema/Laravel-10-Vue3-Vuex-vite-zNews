@@ -50,7 +50,7 @@ const performDeleteProduct=async (id) => {
 };
 
 onMounted(() => {
-  console.log('fetchProducts mounted.');
+  // console.log('fetchProducts mounted.');
   store.dispatch('products/loadProduct');
 });
 

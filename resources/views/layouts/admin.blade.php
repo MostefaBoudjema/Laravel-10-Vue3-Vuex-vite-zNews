@@ -23,6 +23,7 @@
 <body>
     <div id="admin">
     </div>
+    <script type="text/javascript" src="{{ asset('main.js') }}"></script>
 </body>
 
 </html>

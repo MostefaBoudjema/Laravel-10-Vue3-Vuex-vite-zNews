@@ -3,6 +3,9 @@
     <div class="d-flex align-items-center justify-content-center " style="height: 100vh;">
       <form @submit.prevent="login" class="needs-validation p-5 border w-50">
         <div class="mb-3 row">
+          <label for="email" class="col-sm-12 col-form-label d-flex align-items-center justify-content-center">Admin Login</label>
+        </div>
+        <div class="mb-3 row">
           <label for="email" class="col-sm-4 col-form-label">Email:</label>
           <div class="col-sm-8">
             <input type="text" id="email" class="form-control" v-model="form.email" required>

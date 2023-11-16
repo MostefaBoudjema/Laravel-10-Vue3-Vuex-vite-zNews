@@ -1,57 +1,62 @@
 import { createRouter, createWebHistory } from 'vue-router';
-const AUTHOR_NAME='Mostefa Boudjema';
+
+const AUTHOR_NAME = 'Mostefa Boudjema';
 
 function generateMetaTitle(routeName, projectType) {
-    return `${AUTHOR_NAME} - ${projectType? projectType+' ':''}${routeName}`;
+    return `${AUTHOR_NAME} - ${projectType ? projectType + ' ' : ''}${routeName}`;
 }
+
 const routes = [
-    { path: '/admin/login', component: () => import('~admin/Auth/Login.vue'), name: 'login' },
+    {
+        path: '/admin/login',
+        component: () => import('~admin/Auth/Login.vue'),
+        name: 'login'
+    },
     {
         path: '/admin',
-        name: "Basic",
+        name: 'Basic',
         component: () => import('~admin/layouts/Basic.vue'),
-        redirect: "/admin/dashboard",
+        redirect: '/admin/dashboard',
         children: [
             {
-                path: '/admin/dashboard', 
+                path: 'dashboard',
                 name: 'Dashboard',
                 component: () => import('~admin/Pages/Dashboard.vue'),
                 meta: {
-                    title: generateMetaTitle('Dashboard'),
-                },
+                    title: generateMetaTitle('Dashboard')
+                }
             },
             {
-                path: '/admin/product',
-                component: () => import('~admin/Pages/Products/IndexProduct.vue'),
+                path: 'product',
                 name: 'Product',
+                component: () => import('~admin/Pages/Products/IndexProduct.vue'),
                 meta: {
-                    title: generateMetaTitle('Product'),
-                },
+                    title: generateMetaTitle('Product')
+                }
             },
             {
-                path: '/admin/blank', 
+                path: 'blank',
                 name: 'Blank',
                 component: () => import('~admin/Pages/Blank.vue'),
                 meta: {
-                    title: generateMetaTitle('Blank'),
-                },
-            },
+                    title: generateMetaTitle('Blank')
+                }
+            }
         ]
     },
     {
         path: '/admin/:catchAll(.*)',
-        component: () => import('~frontend/views/404.vue'),
-    },
+        component: () => import('~frontend/views/404.vue')
+    }
 ];
 
-
-const router=createRouter({
+const router = createRouter({
     history: createWebHistory(),
     routes,
     scrollBehavior() {
-        document.getElementById('app');
-        // document.getElementById('app').scrollIntoView();
-    },
+        // Scroll to the top of the page on route change
+        window.scrollTo(0, 0);
+    }
 });
 
 export default router;
