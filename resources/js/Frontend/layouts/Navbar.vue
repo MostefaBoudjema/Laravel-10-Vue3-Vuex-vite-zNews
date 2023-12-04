@@ -58,7 +58,7 @@
                             </li>
                         <!-- </ul>
                         <ul class="nav-pills navbar-nav ml-auto d-flex d-md-none d-lg-flex"> -->
-                    <li v-if="true" class="nav-item dropdown">
+                    <li v-if="false" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <!-- <img :src="user.photo_url" style="width: 15px;" class="rounded-circle profile-photo mr-1" alt /> -->

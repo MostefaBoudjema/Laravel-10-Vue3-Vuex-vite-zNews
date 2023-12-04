@@ -1,6 +1,7 @@
+<!-- Login.vue  -->
 <template>
   <div class="container">
-    <div class="d-flex align-items-center justify-content-center " style="height: 100vh;">
+    <div class="d-flex align-items-center justify-content-center " style="height: 60vh;">
       <form @submit.prevent="login" class="needs-validation p-5 border w-50">
         <div class="mb-3 row">
           <label for="email" class="col-sm-4 col-form-label">Email:</label>
@@ -30,8 +31,11 @@
 <script setup>
 
 import { ref } from 'vue';
-import axios from 'axios'; // You need to import Axios or your HTTP client of choice.
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
+const store=useStore();
+const router=useRouter();
 
 const form=ref({
   email: '',
@@ -42,25 +46,24 @@ const error=ref(null);
 
 const login=async () => {
   try {
-    // First, get the CSRF token cookie
-    // await axios.get('/sanctum/csrf-cookie');
+    const userData={ ...form._value };
+    const response=await store.dispatch('users/loginUser', userData);
 
-    // Then, send the login request
-    const response=await axios.post('/api/login', form.value);
-
-    const data=response.data;
-    if (data.status==='success') {
-      localStorage.setItem('adminUser', JSON.stringify(data.name));
-      // You should use the router from Vue Router here.
-      // This example assumes you have Vue Router set up.
-      router.push('/admin');
+    // console.log(response.user.status); 
+    if (response&&response.user.status=='success') {
+      router.push('/');
     } else {
-      error.value=data.error;
+      console.log(response.error);
+      error.value=response.error;
     }
   } catch (err) {
-    error.value='An error occurred during login.';
+    console.log(err);
+    error.value=err;
   }
 };
+
+
+
 </script>
 
 <style scoped></style>
